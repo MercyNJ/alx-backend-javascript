@@ -1,4 +1,3 @@
-// Define the Student interface
 interface Student {
     firstName: string;
     lastName: string;
@@ -6,7 +5,6 @@ interface Student {
     location: string;
 }
 
-// Create two student objects
 const student1: Student = {
     firstName: "Mercy",
     lastName: "Njuguna",
@@ -23,10 +21,8 @@ const student2: Student = {
 
 const studentsList: Student[] = [student1, student2];
 
-// Create a table element
 const table = document.createElement('table');
 
-// Create the table header
 const thead = document.createElement('thead');
 const headerRow = document.createElement('tr');
 const firstNameHeader = document.createElement('th');
@@ -40,7 +36,6 @@ headerRow.appendChild(locationHeader);
 thead.appendChild(headerRow);
 table.appendChild(thead);
 
-// Create the table body
 const tbody = document.createElement('tbody');
 studentsList.forEach((student) => {
     const row = document.createElement('tr');
