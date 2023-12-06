@@ -31,5 +31,5 @@ const minorSubject2: MinorCredits = { credits: 2, brand: 'MinorCredits' };
 const resultMajor = sumMajorCredits(majorSubject1, majorSubject2);
 const resultMinor = sumMinorCredits(minorSubject1, minorSubject2);
 
-console.log('Sum of Major Credits:', resultMajor); // Should print { credits: 7, brand: 'MajorCredits' }
-console.log('Sum of Minor Credits:', resultMinor); // Should print { credits: 3, brand: 'MinorCredits' }
+console.log('Sum of Major Credits:', resultMajor);
+console.log('Sum of Minor Credits:', resultMinor);
