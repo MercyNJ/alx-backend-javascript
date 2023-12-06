@@ -45,8 +45,31 @@ function createEmployee(salary: number | string): Director | Teacher {
   } else {
     return new Director();
   }
+  }
+
+function isDirector(employee: Director | Teacher): employee is Director {
+  return employee instanceof Director;
 }
 
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee('$500'));
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  } else {
+    return employee.workTeacherTasks();
+  }
+}
+
+type Subjects = 'Math' | 'History';
+
+function teachClass(todayClass: Subjects): string {
+  if (todayClass == 'Math') {
+    return 'Teaching Math';
+  } else if (todayClass === 'History') {
+    return 'Teaching History';
+  } else {
+    return 'Unknown subject';
+  }
+}
+
+console.log(teachClass('Math'));
+console.log(teachClass('History'));
