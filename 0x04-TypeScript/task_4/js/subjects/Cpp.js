@@ -1,4 +1,3 @@
-"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,7 +8,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-exports.__esModule = true;
 var Subjects;
 (function (Subjects) {
     var Cpp = /** @class */ (function (_super) {
@@ -21,10 +19,12 @@ var Subjects;
             return 'Here is the list of requirements for Cpp';
         };
         Cpp.prototype.getAvailableTeacher = function () {
-            if (!this.teacher || this.teacher.experienceTeachingC === undefined || this.teacher.experienceTeachingC <= 0) {
+            if (this.teacher && this.teacher.experienceTeachingC !== undefined) {
+                return "Available Teacher: " + this.teacher.firstName;
+            }
+            else {
                 return 'No available teacher';
             }
-            return "Available Teacher: " + this.teacher.firstName;
         };
         return Cpp;
     }(Subjects.Subject));

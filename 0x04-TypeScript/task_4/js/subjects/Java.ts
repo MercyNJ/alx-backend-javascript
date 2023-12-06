@@ -1,20 +1,19 @@
-import { Subject } from './Subject';
-
 namespace Subjects {
   export interface Teacher {
     experienceTeachingJava?: number;
   }
 
-  export class Java extends Subjects.Subject {
-    getRequirements(): string {
+  export class Java extends Subject {
+    getRequirements() {
       return 'Here is the list of requirements for Java';
     }
 
-    getAvailableTeacher(): string {
-      if (!this.teacher || this.teacher.experienceTeachingJava === undefined || this.teacher.experienceTeachingJava <= 0) {
+    getAvailableTeacher() {
+      if (this.teacher && this.teacher.experienceTeachingJava > 0) {
+        return 'Available Teacher: ' + this.teacher.firstName;
+      } else {
         return 'No available teacher';
       }
-      return `Available Teacher: ${this.teacher.firstName}`;
     }
   }
 }
