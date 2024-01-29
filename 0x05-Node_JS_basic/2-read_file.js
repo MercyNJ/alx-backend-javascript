@@ -13,7 +13,7 @@ function countStudents(path) {
     dataLines.forEach((line) => {
       const [firstname, lastname, age, field] = line.split(',');
 
-      if (firstname && lastname && age && field && field !== 'firstname') {
+      if (firstname && lastname && age && field) {
         NUMBER_OF_STUDENTS += 1;
 
         if (fieldCounts[field]) {
