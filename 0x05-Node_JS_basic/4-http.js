@@ -1,6 +1,6 @@
 const http = require('http');
 
-const PORT = 1245;
+const port = 1245;
 const host = '127.0.0.1';
 
 const app = http.createServer((req, res) => {
@@ -9,7 +9,7 @@ const app = http.createServer((req, res) => {
   res.end('Hello Holberton School!\n');
 });
 
-app.listen(PORT, host, () => {
+app.listen(port, host, () => {
 });
 
 module.exports = app;
