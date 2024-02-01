@@ -3,6 +3,7 @@ const { expect } = require('chai');
 
 const sendPaymentRequestToApi = require('./3-payment');
 const Utils = require('./utils');
+const assert = require('assert');
 
 describe('sendPaymentRequestToApi', function () {
   it('validates the usage of Utils.calculateNumber with sinon.stub', () => {
@@ -11,8 +12,9 @@ describe('sendPaymentRequestToApi', function () {
 
     sendPaymentRequestToApi(100, 20);
 
-    expect(calculateNumberStub.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
-    expect(consoleLogSpy.calledOnceWithExactly('The total is: 10')).to.be.true;
+    assert(consoleLogSpy.withArgs('The total is: 10').calledOnce);
+    assert(calculateNumberStub.withArgs('SUM', 100, 20).calledOnce);
+
 
     calculateNumberStub.restore();
     consoleLogSpy.restore();
