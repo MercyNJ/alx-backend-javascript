@@ -12,8 +12,8 @@ describe('sendPaymentRequestToApi', function () {
 
     sendPaymentRequestToApi(100, 20);
 
-    expect(calculateNumberStub.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
-    expect(consoleLogSpy.calledOnceWithExactly('The total is: 10')).to.be.true;
+    expect(calculateNumberStub.calledOnceWithExactly('SUM', 100, 20)).to.equal(true);
+    expect(consoleLogSpy.calledOnceWithExactly('The total is: 10')).to.equal(true);
 
     calculateNumberStub.restore();
     consoleLogSpy.restore();
