@@ -1,5 +1,9 @@
 {
 	"scripts": {
-		"test": "mocha '*.test.js'"
+		"test": "mocha '*.test.js' --experimental-vm-modules"
+	},
+	"devDependencies": {
+		"chai": "^4.3.7",
+		"mocha": "^10.2.0"
 	}
 }
