@@ -29,15 +29,18 @@ function countStudents(path) {
 
         const NUMBER_OF_STUDENTS = dataLines.length;
 
-        console.log(`Number of students: ${NUMBER_OF_STUDENTS}`);
-
+        const studentsList = [];
         for (const key of Object.keys(fieldCounts)) {
-          console.log(
-            `Number of students in ${key}: ${fieldCounts[key].length}. List: ${fieldCounts[key].join(', ')}`,
+          studentsList.push(
+            `Number of students in ${key}: ${fieldCounts[key].length}. List: ${fieldCounts[key].join(', ')}`
           );
         }
 
-        resolve();
+        // Resolve with the list of students
+        resolve({
+          total: NUMBER_OF_STUDENTS,
+          list: studentsList
+        });
       })
       .catch(() => {
         reject(new Error('Cannot load the database'));
@@ -53,14 +56,19 @@ const app = http.createServer((req, res) => {
     res.end();
   }
   if (req.url === '/students') {
-    res.write('This is the list of our students\n');
-    countStudents(process.argv[2].toString()).then((output) => {
-      const outString = output.slice(0, -1);
-      res.end(outString);
-    }).catch(() => {
-      res.statusCode = 404;
-      res.end('Cannot load the database');
-    });
+    countStudents(process.argv[2].toString())
+      .then((studentsData) => {
+        res.write(`This is the list of our students\n`);
+        res.write(`Number of students: ${studentsData.total}\n`);
+        studentsData.list.forEach((line, index) => {
+          res.write(`${line}${index < studentsData.list.length - 1 ? '\n' : ''}`);
+        });
+        res.end();
+      })
+      .catch(() => {
+        res.statusCode = 404;
+        res.end('Cannot load the database');
+      });
   }
 });
 
